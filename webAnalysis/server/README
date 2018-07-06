@@ -1,0 +1,12 @@
+
+
+1. Nodejs and NPM should be installed in the system
+2. RUN -> npm install
+3. RUN -> node app.js
+4. OR just RUN -> npm start (it will internally install all node modules and run the server)
+
+Finally your server is running at 7527 :)
+
+If you already put the frontend build code in www folder then just run http://localhost:7527 in your browser 
+
+For any doubt please call +919432945089 or mail isambitd@gmail.com

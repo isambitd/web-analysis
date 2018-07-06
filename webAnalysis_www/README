@@ -1,0 +1,21 @@
+
+1. Nodejs and NPM should be installed in the system
+2. RUN -> npm install -g grunt-cli bower
+3. Avoid if you already have all these dependencies installed
+4. RUN -> npm install (if permission required the please run with sudo)
+5. RUN -> bower install
+6. RUN -> grunt serve --force 
+
+It will run the webapp on http://localhost:9786
+
+To run build
+7. RUN -> grunt build --force
+
+And your build code is ready and you can get that at 'dist' folder.
+
+Copy the content of the folder and paste that in the webAnalysis/www/
+Then you can access that on the same port as server 7527 -> http://localhost:7527
+
+:)
+
+For any doubt please call +919432945089 or mail isambitd@gmail.com

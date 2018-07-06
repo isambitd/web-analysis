@@ -1,0 +1,107 @@
+<div class="col-md-12" ng-controller="AdvancedCtrl">
+  <div class="container pageTop">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+               <div class="row">
+                  <div class="col-md-12">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search ..." ng-model="searchText" ng-keyup="$event.keyCode == 13 ? search() : null">
+                      <span class="input-group-btn">
+                        <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
+                      </span>
+                    </div>
+                    <br/>
+                    <div class="text-right">
+                         <a ng-show="viewCleanButton" href="#" ng-click="cleanSearchText()">Clean</a>
+                        &nbsp;<a ui-sref="home">Goto Heavy Search</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="loader" ng-show="showLoader">
+                    <div class="lds-ring">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+                <div class="tableContainer" ng-show="showTable">
+                    <div class="alert alert-success" role="alert">
+                        <strong>Title:</strong> {{tableData.title}}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <ul class="list-group">
+                                <li class="list-group-item alert-infoBlock active">
+                                    <strong>Headings Count - Total {{tableData.headings.total}}</strong>
+                                </li>
+                                <li class="list-group-item alert-infoBlock" ng-repeat="(x, y) in tableData.headings.list">
+                                    <span class="badge">{{y.count}}</span>
+                                    <span>{{y.type}}</span>
+                                </li>
+                            </ul>  
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="alert alert-warning" role="alert">
+                                    <strong>Time Taken:</strong> <span>{{tableData.timeTaken}}</span> Secs
+                            </div>
+                             <div class="alert alert-danger" role="alert">
+                                <strong>Html Version:</strong> {{tableData.htmlVersion}}
+                            </div>
+                              <div class="alert alert-success" role="alert">
+                                    <strong>Login Form:</strong> {{loginForm}}
+                                    <span ng-show="tableData.loginForm" class="loginFormVal positive"><i class="fa fa-check"></i></span>
+                                    <span ng-hide="tableData.loginForm" class="loginFormVal negetive"><i class="fa fa-times"></i></span>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="row">
+                		<div ng-class="{'col-md-12':linksLenth === 0, 'col-md-6':linksLenth > 0}">
+		                    <ul class="list-group" ng-repeat="linkType in tableData.linksWithStatus" ng-show="linkType.links.length">
+	                            <li class="list-group-item alert-info active">
+	                                <span>{{linkType.type}} Links ( {{linkType.links.length}} )</span>
+                                     <span class="badge badge-counter">
+                                        <span><span class="loginFormVal positive"><i class="fa fa-check"></i></span> {{linkType.accessible}} </span>
+                                        <span><span class="loginFormVal negetive"><i class="fa fa-times"></i></span> {{linkType.notAccessible}} </span>
+                                    </span>
+	                            </li>
+	                            <li class="list-group-item alert-info" ng-repeat="(x,y) in linkType.links" >
+	                                <span class="badge badge-link">
+	                                    <span ng-show="y.accessible" class="link-accessible positive"><i class="fa fa-check"></i></span>
+	                                    <span ng-show="{{!y.accessible}}" class="link-accessible negetive"><i class="fa fa-times"></i></span>
+	                                </span>
+	                                <span>{{y.link}}</span>
+	                            </li>
+	                        </ul> 
+                        </div>
+	                    <div class="col-md-6" ng-show="linksLenth">
+	                    	 <ul class="list-group" ng-show="tableData.links.length">
+		                            <li class="list-group-item alert-info active">
+		                                Links Queue ( {{linksLenth}} )
+		                            </li>
+		                            <li class="list-group-item alert-info" ng-show="link" ng-repeat="link in tableData.links track by $index" >
+		                               <!--  <span class="badge badge-link-queue">
+		                                    <span ng-show="link.accessible" class="link-accessible positive"><i class="fa fa-check"></i></span>
+		                                </span> -->
+		                                <span>{{link.link}}</span>
+		                            </li>
+		                        </ul> 
+	                    </div>
+	                </div>
+                </div>    
+                <div class="tableContainer" ng-show="errorCont">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                             <ul class="list-group text-center">
+                                <li class="list-group-item active">
+                                    Error
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>{{error}}</strong>
+                                </li>
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
