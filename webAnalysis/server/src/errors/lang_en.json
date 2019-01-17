@@ -1,0 +1,5 @@
+{
+  "errors": {
+    "notValidURI": "The input is not a valid URI"
+  }
+}
